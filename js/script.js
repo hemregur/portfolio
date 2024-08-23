@@ -7,6 +7,19 @@ let loveElement= null;
 let loveItems = ["love","love"];
 let pawElement = document.querySelector(".iconPaw img");
 let catElement = document.querySelector(".cat img");
+
+
+// localStorage islemleri
+let dMode = localStorage.getItem("mode") ? localStorage.getItem("mode") : "light";
+ 
+    if(dMode != "light" && container.classList.contains(dMode) != 1){
+        container.classList.add(dMode);
+        button2.innerHTML='<img class="rotate" src="./media/icons/moonn.png" alt="" srcset="">';
+    }  
+
+    
+
+
 handButton.addEventListener("click", ()=>{
     let loveDom = document.querySelector(".love");
     
@@ -37,11 +50,13 @@ button2.addEventListener("click", function(){
         }, 1);
         if(container.classList.contains("dark")){ 
             container.classList.remove("dark");
+            localStorage.setItem("mode","light");
             setTimeout(()=>{
                 button2.innerHTML='<img class="rotate" src="./media/icons/sunn.png" alt="" srcset="">';
             },300);
         }else{ 
-            container.classList.add("dark"); 
+            container.classList.add("dark");
+            localStorage.setItem("mode","dark");
             setTimeout(()=>{
                 button2.innerHTML='<img class="rotate" src="./media/icons/moonn.png" alt="" srcset="">';
             },300);
